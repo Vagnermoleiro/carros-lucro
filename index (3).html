@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Os Carros Que Mais Dão Lucro no Leilão — Percepcar</title>
+<meta name="description" content="O guia dos modelos que mais saem rápido na revenda — e como calcular o lance máximo de qualquer carro para não transformar oportunidade em prejuízo.">
+<style>
+:root{
+  --bg:#0a0a0c; --bg2:#111114; --card:#16161a; --line:#26262c;
+  --red:#E8281A; --red2:#ff4133; --redglow:rgba(232,40,26,.18);
+  --white:#ffffff; --gray:#9a9a9f; --gray2:#6e6e74; --gold:#E8B23A;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.6;overflow-x:hidden}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+
+/* URGÊNCIA BAR */
+.urg{background:var(--red);color:#fff;text-align:center;padding:9px 14px;font-size:13.5px;font-weight:600;letter-spacing:.2px}
+.urg span{opacity:.95}
+
+/* HERO */
+.hero{position:relative;padding:62px 0 50px;overflow:hidden}
+.hero::before{content:"";position:absolute;top:-180px;right:-160px;width:520px;height:520px;background:radial-gradient(circle,var(--redglow),transparent 65%);pointer-events:none}
+.eyebrow{display:inline-block;background:var(--red);color:#fff;font-size:11.5px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;padding:6px 13px;border-radius:5px;margin-bottom:20px}
+.brand{font-size:13px;color:var(--gray);letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;font-weight:600}
+h1{font-size:clamp(34px,6.4vw,62px);line-height:1.05;font-weight:800;letter-spacing:-1.4px;margin-bottom:20px}
+h1 .r{color:var(--red2)}
+.sub{font-size:clamp(16px,2.4vw,20px);color:var(--gray);max-width:680px;margin-bottom:30px;line-height:1.55}
+.sub b{color:#fff;font-weight:600}
+.cta-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:9px;background:var(--red);color:#fff;font-size:17px;font-weight:700;padding:16px 30px;border-radius:9px;text-decoration:none;transition:transform .15s,box-shadow .15s,background .15s;box-shadow:0 8px 30px var(--redglow)}
+.btn:hover{background:var(--red2);transform:translateY(-2px);box-shadow:0 12px 38px var(--redglow)}
+.btn.big{font-size:19px;padding:19px 40px}
+.guarantee{font-size:13.5px;color:var(--gray2)}
+.guarantee b{color:var(--gray);font-weight:600}
+
+/* STATS */
+.stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg2)}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.stat{padding:30px 18px;text-align:center;border-right:1px solid var(--line)}
+.stat:last-child{border-right:none}
+.stat .n{font-size:clamp(26px,4vw,40px);font-weight:800;color:var(--red2);letter-spacing:-1px;line-height:1}
+.stat .l{font-size:12.5px;color:var(--gray);margin-top:9px;line-height:1.35}
+
+/* SECTION */
+section{padding:64px 0}
+.sec-eyebrow{color:var(--red2);font-size:12.5px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;margin-bottom:12px}
+.sec-title{font-size:clamp(26px,4.4vw,40px);font-weight:800;letter-spacing:-1px;line-height:1.1;margin-bottom:18px}
+.sec-title .r{color:var(--red2)}
+.sec-intro{font-size:17px;color:var(--gray);max-width:680px;margin-bottom:38px;line-height:1.6}
+
+/* MERCEDES HOOK */
+.hook{background:linear-gradient(180deg,var(--bg2),var(--bg));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.hook-box{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--red);border-radius:12px;padding:34px 32px;max-width:760px}
+.hook-box .big-num{font-size:clamp(30px,5vw,46px);font-weight:800;color:#fff;letter-spacing:-1px;margin-bottom:8px;line-height:1.05}
+.hook-box .big-num .r{color:var(--red2)}
+.hook-box p{font-size:16.5px;color:var(--gray);line-height:1.65;margin-bottom:14px}
+.hook-box p:last-child{margin-bottom:0}
+.hook-box b{color:#fff;font-weight:600}
+
+/* INCLUDED GRID */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.feat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:26px 24px;transition:border-color .2s,transform .2s}
+.feat:hover{border-color:var(--red);transform:translateY(-3px)}
+.feat .ic{width:44px;height:44px;border-radius:9px;background:var(--redglow);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:15px}
+.feat h3{font-size:18px;font-weight:700;margin-bottom:9px;letter-spacing:-.3px}
+.feat p{font-size:14.5px;color:var(--gray);line-height:1.55}
+
+/* MODELS PREVIEW */
+.models{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.model-list{display:flex;flex-direction:column;gap:11px;max-width:760px}
+.model-row{display:flex;align-items:center;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 20px}
+.model-row .tag{font-size:11px;font-weight:700;letter-spacing:.5px;padding:4px 10px;border-radius:5px;white-space:nowrap;text-transform:uppercase}
+.tag.green{background:rgba(99,153,34,.15);color:#9cc459}
+.tag.lock{background:rgba(110,110,116,.15);color:var(--gray2)}
+.model-row .txt{font-size:15.5px;font-weight:600;color:#fff}
+.model-row.locked .txt{color:var(--gray2);letter-spacing:2px}
+.model-row.locked{filter:saturate(.4)}
+.lock-cta{margin-top:24px;text-align:center;padding:22px;background:var(--card);border:1px dashed var(--line);border-radius:12px}
+.lock-cta .lk{font-size:15px;color:var(--gray);margin-bottom:14px}
+.lock-cta .lk b{color:#fff}
+
+/* TESTIMONIALS */
+.tgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tcard{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:26px 22px}
+.stars{color:var(--gold);font-size:15px;letter-spacing:2px;margin-bottom:13px}
+.tcard p{font-size:14.5px;color:#d8d8dc;line-height:1.6;margin-bottom:18px}
+.tperson{display:flex;align-items:center;gap:12px}
+.avatar{width:40px;height:40px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;color:#fff}
+.tperson .pn{font-size:14px;font-weight:600;color:#fff}
+.tperson .pl{font-size:12.5px;color:var(--gray2)}
+
+/* PRICE */
+.price-sec{background:linear-gradient(180deg,var(--bg),var(--bg2));text-align:center}
+.price-card{max-width:520px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:44px 36px;position:relative;overflow:hidden}
+.price-card::before{content:"";position:absolute;top:-120px;left:50%;transform:translateX(-50%);width:340px;height:340px;background:radial-gradient(circle,var(--redglow),transparent 65%);pointer-events:none}
+.price-badge{display:inline-block;background:var(--redglow);color:var(--red2);font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:6px 14px;border-radius:6px;margin-bottom:20px;position:relative}
+.price-title{font-size:24px;font-weight:800;margin-bottom:8px;letter-spacing:-.5px;position:relative}
+.price-old{font-size:16px;color:var(--gray2);text-decoration:line-through;margin-bottom:2px;position:relative}
+.price-now{font-size:54px;font-weight:800;color:#fff;letter-spacing:-2px;line-height:1;margin-bottom:6px;position:relative}
+.price-now .cents{font-size:26px;vertical-align:super}
+.price-sub{font-size:14px;color:var(--gray);margin-bottom:26px;position:relative}
+.price-list{text-align:left;max-width:340px;margin:0 auto 28px;position:relative}
+.price-list li{list-style:none;font-size:14.5px;color:#d8d8dc;padding:8px 0 8px 30px;position:relative;line-height:1.5}
+.price-list li::before{content:"✓";position:absolute;left:0;top:8px;color:var(--red2);font-weight:800;font-size:15px}
+.price-foot{font-size:12.5px;color:var(--gray2);margin-top:18px;position:relative}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--line);padding:22px 0}
+.faq-item h3{font-size:17px;font-weight:700;margin-bottom:9px;color:#fff}
+.faq-item p{font-size:15px;color:var(--gray);line-height:1.6}
+
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--line);padding:38px 0;text-align:center}
+footer .fbrand{font-size:15px;font-weight:700;letter-spacing:1px;color:#fff;margin-bottom:8px}
+footer p{font-size:12.5px;color:var(--gray2);line-height:1.7;max-width:560px;margin:0 auto}
+
+@media(max-width:760px){
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(2){border-right:none}
+  .stat:nth-child(1),.stat:nth-child(2){border-bottom:1px solid var(--line)}
+  .grid{grid-template-columns:1fr}
+  .tgrid{grid-template-columns:1fr}
+  .hook-box{padding:26px 22px}
+}
+</style>
+</head>
+<body>
+
+<div class="urg">⚡ <span>Quem garante o guia recebe uma condição especial no curso completo</span></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="brand">Percepcar apresenta</div>
+    <span class="eyebrow">Guia Exclusivo · Edição 2026</span>
+    <h1>Os Carros Que Mais<br>Dão <span class="r">Lucro</span> no Leilão</h1>
+    <p class="sub">O guia dos modelos que <b>saem mais rápido na revenda</b> — quanto vale cada um, e como calcular o lance máximo de qualquer carro para <b>não transformar oportunidade em prejuízo</b>.</p>
+    <div class="cta-row">
+      <a href="#preco" class="btn big">Quero o guia agora →</a>
+      <div class="guarantee">🔒 <b>Acesso imediato</b> · 7 dias de garantia · R$ 19,90</div>
+    </div>
+  </div>
+</header>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat"><div class="n">30+</div><div class="l">Modelos analisados por margem de revenda</div></div>
+      <div class="stat"><div class="n">5</div><div class="l">Categorias: do popular ao premium</div></div>
+      <div class="stat"><div class="n">1</div><div class="l">Fórmula para calcular o lance máximo</div></div>
+      <div class="stat"><div class="n">10M</div><div class="l">Seguidores confiam no Percepcar</div></div>
+    </div>
+  </div>
+</div>
+
+<section class="hook">
+  <div class="wrap">
+    <div class="sec-eyebrow">Por que isso importa</div>
+    <h2 class="sec-title">Um carro de R$90 mil<br>pode sair por <span class="r">uma fração</span> disso</h2>
+    <div class="hook-box">
+      <div class="big-num">R$90 mil <span class="r">→</span> R$15 mil</div>
+      <p>Um modelo premium como uma Mercedes A200, que vale por volta de R$90 mil no mercado, pode aparecer em leilão por uma fração desse valor quando está danificado ou parado.</p>
+      <p>O desconto chama atenção — mas <b>o que define se é um bom negócio não é o preço de entrada</b>. É saber quais modelos o mercado realmente procura, quanto cada um vale, e quanto faz sentido pagar.</p>
+      <p>Sem esses três pontos, o desconto vira armadilha. <b>É exatamente isso que este guia te ensina a enxergar.</b></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-eyebrow">O que está incluso</div>
+    <h2 class="sec-title">Um guia completo.<br>Não um <span class="r">resumo</span>.</h2>
+    <div class="grid">
+      <div class="feat"><div class="ic">🏆</div><h3>Os modelos que mais saem rápido</h3><p>As picapes, populares e SUVs que o mercado absorve com mais velocidade — organizados por categoria e demanda real de revenda.</p></div>
+      <div class="feat"><div class="ic">💰</div><h3>Quanto vale cada um</h3><p>O valor de mercado de cada modelo e a margem real entre a compra no leilão e a revenda, considerando todos os custos.</p></div>
+      <div class="feat"><div class="ic">🧮</div><h3>A fórmula do lance máximo</h3><p>A conta exata para definir quanto pagar em qualquer carro — com exemplo prático preenchido passo a passo.</p></div>
+      <div class="feat"><div class="ic">🔍</div><h3>Os 3 critérios que definem o lucro</h3><p>Liquidez, custo de peças e margem real. Como avaliar qualquer modelo por esses três filtros antes do lance.</p></div>
+      <div class="feat"><div class="ic">⚠️</div><h3>Os modelos que você deve evitar</h3><p>Os carros que parecem oportunidade mas travam o seu capital — importados de nicho, baixo volume e problemas crônicos.</p></div>
+      <div class="feat"><div class="ic">✅</div><h3>Checklist antes do lance</h3><p>Uma lista de verificação completa para você percorrer antes de dar qualquer lance — e comprar com método, não na sorte.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="models">
+  <div class="wrap">
+    <div class="sec-eyebrow">Dentro do guia</div>
+    <h2 class="sec-title">Os modelos por <span class="r">categoria</span></h2>
+    <p class="sec-intro">Uma prévia de como o conteúdo é organizado. Cada categoria traz os modelos certos, com análise de liquidez, valor e margem.</p>
+    <div class="model-list">
+      <div class="model-row"><span class="tag green">Picapes</span><span class="txt">A categoria de maior giro no mercado</span></div>
+      <div class="model-row"><span class="tag green">Populares</span><span class="txt">Alto giro e menor risco por projeto</span></div>
+      <div class="model-row locked"><span class="tag lock">SUVs</span><span class="txt">████████████████████</span></div>
+      <div class="model-row locked"><span class="tag lock">Premium</span><span class="txt">████████████████████</span></div>
+      <div class="model-row locked"><span class="tag lock">Evitar</span><span class="txt">████████████████████</span></div>
+    </div>
+    <div class="lock-cta">
+      <div class="lk">🔒 <b>Todas as categorias e modelos</b> liberados na versão completa do guia</div>
+      <a href="#preco" class="btn">Liberar o guia completo →</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-eyebrow">Quem já leu</div>
+    <h2 class="sec-title">O que estão <span class="r">dizendo</span></h2>
+    <div class="tgrid">
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <p>Eu só olhava o preço do leilão e ignorava a revenda. Depois desse guia entendi por que alguns carros ficam meses parados. Mudou minha forma de escolher os lotes.</p>
+        <div class="tperson"><div class="avatar">JM</div><div><div class="pn">João M.</div><div class="pl">Comprador iniciante</div></div></div>
+      </div>
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <p>A parte da fórmula do lance máximo foi o que mais me ajudou. Agora eu chego com um número definido e não passo dele de jeito nenhum. Conteúdo direto ao ponto.</p>
+        <div class="tperson"><div class="avatar">AS</div><div><div class="pn">André S.</div><div class="pl">Leitor do guia</div></div></div>
+      </div>
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <p>Gostei que ele fala o que evitar, não só o que comprar. A lista de modelos que travam o capital me poupou de fazer uma escolha errada logo no começo.</p>
+        <div class="tperson"><div class="avatar">RC</div><div><div class="pn">Rodrigo C.</div><div class="pl">Leitor do guia</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="price-sec" id="preco">
+  <div class="wrap">
+    <div class="price-card">
+      <span class="price-badge">Oferta de lançamento</span>
+      <div class="price-title">Os Carros Que Mais Dão Lucro no Leilão</div>
+      <div class="price-old">de R$ 39,90</div>
+      <div class="price-now">R$ 19<span class="cents">,90</span></div>
+      <div class="price-sub">Pagamento único · acesso imediato</div>
+      <ul class="price-list">
+        <li>Mais de 30 modelos analisados por margem de revenda</li>
+        <li>As 5 categorias, do popular ao premium</li>
+        <li>A fórmula completa do lance máximo</li>
+        <li>Os modelos que você deve evitar</li>
+        <li>Checklist de avaliação antes do lance</li>
+        <li>Condição especial no curso completo</li>
+      </ul>
+      <a href="https://pay.hotmart.com/A106386153V" class="btn big">Garantir meu guia →</a>
+      <div class="price-foot">🔒 Compra segura via Hotmart · 7 dias de garantia incondicional</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-eyebrow">Dúvidas</div>
+    <h2 class="sec-title">Antes de <span class="r">garantir</span></h2>
+    <div class="faq-item"><h3>Preciso já entender de leilão para aproveitar?</h3><p>Não. O guia foi escrito para quem quer aprender a escolher os carros certos do zero. A linguagem é simples e direta, sem termos complicados.</p></div>
+    <div class="faq-item"><h3>Como recebo o guia depois de comprar?</h3><p>O acesso é imediato. Assim que o pagamento é confirmado, você recebe o guia digital em PDF para ler no celular, tablet ou computador.</p></div>
+    <div class="faq-item"><h3>Esse guia serve para revender ou para uso próprio?</h3><p>Os dois. Ele te ajuda tanto a escolher um bom carro para você mesmo quanto a identificar os modelos com melhor margem para revenda.</p></div>
+    <div class="faq-item"><h3>E se eu não gostar?</h3><p>Você tem 7 dias de garantia. Se o conteúdo não for o que esperava, é só pedir o reembolso e devolvemos o valor integral, sem perguntas.</p></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand">PERCEPCAR</div>
+    <p>Este guia tem caráter informativo e educacional sobre o mercado de leilões de veículos. Os valores de mercado citados são referências e podem variar conforme modelo, ano, estado de conservação e região. percepcar.com.br</p>
+  </div>
+</footer>
+
+</body>
+</html>
