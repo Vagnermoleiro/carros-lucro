@@ -242,7 +242,7 @@ footer p{font-size:12.5px;color:var(--gray2);line-height:1.7;max-width:560px;mar
         <li>Checklist de avaliação antes do lance</li>
         <li>Condição especial no curso completo</li>
       </ul>
-      <a href="https://pay.hotmart.com/A106386153V" class="btn big">Garantir meu guia →</a>
+      <a href="https://pay.hotmart.com/A106386153V?src=lp&sck=lp_carros_lucro" class="btn big">Garantir meu guia →</a>
       <div class="price-foot">🔒 Compra segura via Hotmart · 7 dias de garantia incondicional</div>
     </div>
   </div>
@@ -266,5 +266,22 @@ footer p{font-size:12.5px;color:var(--gray2);line-height:1.7;max-width:560px;mar
   </div>
 </footer>
 
+<script>
+/* Rastreamento Percepcar: repassa src/sck da URL para os botoes de checkout.
+   Sem parametros na URL, cai no padrao da landing page. */
+(function () {
+  var q = new URLSearchParams(location.search);
+  var src = q.get('src') || 'lp';
+  var sck = q.get('sck') || 'lp_carros_lucro';
+  document.querySelectorAll('a[href*="pay.hotmart.com"], a[href*="go.hotmart.com"]').forEach(function (a) {
+    try {
+      var u = new URL(a.href);
+      u.searchParams.set('src', src);
+      u.searchParams.set('sck', sck);
+      a.href = u.toString();
+    } catch (e) {}
+  });
+})();
+</script>
 </body>
 </html>
